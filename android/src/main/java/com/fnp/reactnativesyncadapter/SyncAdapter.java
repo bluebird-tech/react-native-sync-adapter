@@ -21,11 +21,7 @@ class SyncAdapter extends AbstractThreadedSyncAdapter {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
         Intent service = new Intent(getContext(), HeadlessService.class);
-        if (Build.VERSION.SDK_INT >= 26) {
-            getContext().startForegroundService(service);
-        }  else {
-            getContext().startService(service);
-        }
+        getContext().startService(service);
     }
 
     /**
